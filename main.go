@@ -41,8 +41,6 @@ func run(args []string) int {
 	agent := command.NewAgent(conf)
 	for _, c := range agent.Checkers {
 		report := c.Check()
-		// log.Print(report.Message)
-
 		var exitCode checkers.Status
 		if code, ok := statusToExitCode[report.Status]; ok {
 			exitCode = code
