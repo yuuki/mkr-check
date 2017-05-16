@@ -12,6 +12,11 @@ import (
 	"github.com/mackerelio/mackerel-agent/config"
 )
 
+const (
+	Name    string = "mkr-check"
+	Version string = "0.1.0"
+)
+
 var statusToExitCode = map[checks.Status]checkers.Status{
 	checks.StatusOK:       checkers.OK,
 	checks.StatusWarning:  checkers.WARNING,
@@ -22,14 +27,22 @@ var statusToExitCode = map[checks.Status]checkers.Status{
 func run(args []string) int {
 	var (
 		conffile string
+		version  bool
 	)
 	flags := flag.NewFlagSet("mkr-check", flag.ContinueOnError)
 	flags.StringVar(&conffile, "c", "/etc/mackerel-agent/mackerel-agent.conf", "mackerel-agent's config file")
 	flags.StringVar(&conffile, "config", "/etc/mackerel-agent/mackerel-agent.conf", "mackerel-agent's config file")
+	flags.BoolVar(&version, "version", false, "")
+	flags.BoolVar(&version, "v", false, "")
 
 	if err := flags.Parse(args); err != nil {
 		log.Println(err)
 		return 10
+	}
+
+	if version {
+		fmt.Fprintf(os.Stderr, "%s version %s\n", Name, Version)
+		return 0
 	}
 
 	conf, err := config.LoadConfig(conffile)
