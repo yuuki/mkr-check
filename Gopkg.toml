@@ -1,0 +1,4 @@
+
+[[dependencies]]
+  name = "github.com/mackerelio/mackerel-agent"
+  version = ">=0.43.0, <1.0.0"

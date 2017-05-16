@@ -1,1 +1,19 @@
-memo = ""
+memo = "1d23fd38908e80e5d24fa52dd8f5caeefa68b00bc2365e5a0d085259a8f8def7"
+
+[[projects]]
+  name = "github.com/BurntSushi/toml"
+  packages = ["."]
+  revision = "b26d9c308763d68093482582cea63d69be07a0f0"
+  version = "v0.3.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/Songmu/timeout"
+  packages = ["."]
+  revision = "cf01263a94e615aab265b0949fc55d5e0e15fa10"
+
+[[projects]]
+  name = "github.com/mackerelio/mackerel-agent"
+  packages = ["config","logging","util","util/windows"]
+  revision = "2d9314cfd730bfb5fabadb87ae2957ccd42a593f"
+  version = "v0.43.0"
