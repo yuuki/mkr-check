@@ -24,7 +24,8 @@ func run(args []string) int {
 		conffile string
 	)
 	flags := flag.NewFlagSet("mkr-check", flag.ContinueOnError)
-	flags.StringVar(&conffile, "conffile", "/etc/mackerel-agent/mackerel-agent.conf", "mackerel-agent's config file")
+	flags.StringVar(&conffile, "c", "/etc/mackerel-agent/mackerel-agent.conf", "mackerel-agent's config file")
+	flags.StringVar(&conffile, "config", "/etc/mackerel-agent/mackerel-agent.conf", "mackerel-agent's config file")
 
 	if err := flags.Parse(args); err != nil {
 		log.Println(err)
