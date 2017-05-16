@@ -1,4 +1,4 @@
-memo = "1d23fd38908e80e5d24fa52dd8f5caeefa68b00bc2365e5a0d085259a8f8def7"
+memo = "30cfe605cf36babc2dc1fa15f99c58b16bfad466b23fe1d3937081921dda9e8d"
 
 [[projects]]
   name = "github.com/BurntSushi/toml"
@@ -7,13 +7,49 @@ memo = "1d23fd38908e80e5d24fa52dd8f5caeefa68b00bc2365e5a0d085259a8f8def7"
   version = "v0.3.0"
 
 [[projects]]
+  name = "github.com/Songmu/retry"
+  packages = ["."]
+  revision = "3a202b1bab4254860f7f71d04c28133026100493"
+  version = "v0.0.1"
+
+[[projects]]
   branch = "master"
   name = "github.com/Songmu/timeout"
   packages = ["."]
   revision = "cf01263a94e615aab265b0949fc55d5e0e15fa10"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/StackExchange/wmi"
+  packages = ["."]
+  revision = "ea383cf3ba6ec950874b8486cd72356d007c768f"
+
+[[projects]]
+  name = "github.com/go-ole/go-ole"
+  packages = [".","oleutil"]
+  revision = "0e87ea779d9deb219633b828a023b32e1244dd57"
+  version = "v1.2.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/mackerelio/checkers"
+  packages = ["."]
+  revision = "38c45ada0125799cb9e16dfeb12efce58fbcee8e"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/mackerelio/golib"
+  packages = ["pluginutil"]
+  revision = "c59a7fb9de8c9e3e77c6d561fda201a678534b62"
+
+[[projects]]
   name = "github.com/mackerelio/mackerel-agent"
-  packages = ["config","logging","util","util/windows"]
+  packages = ["agent","checks","command","config","logging","mackerel","metadata","metrics","metrics/darwin","metrics/freebsd","metrics/linux","metrics/netbsd","metrics/windows","spec","spec/darwin","spec/freebsd","spec/linux","spec/netbsd","spec/windows","util","util/windows","version"]
   revision = "2d9314cfd730bfb5fabadb87ae2957ccd42a593f"
   version = "v0.43.0"
+
+[[projects]]
+  name = "github.com/shirou/gopsutil"
+  packages = ["host","internal/common","process"]
+  revision = "9af92986dda65a8c367157a82b484553e1ec1c55"
+  version = "v2.17.04"
