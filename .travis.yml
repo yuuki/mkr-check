@@ -1,0 +1,20 @@
+language: go
+go:
+- 1.8
+before_deploy:
+- go get -u github.com/laher/goxc
+- mkdir -p $TRAVIS_BUILD_DIR/dist
+- goxc -d=$TRAVIS_BUILD_DIR/dist -bc="linux,!arm darwin" -tasks=clean-destination,xc,archive,rmbin
+script:
+- go test -v $(go list ./... | grep -v vendor)
+deploy:
+  provider: releases
+  skip_cleanup: true
+  file_glob: true
+  api_key:
+    secure: h7D8XprCwMJgK38TPfQkACnRXDEs12PemmH2gG+LdP37VXdwJW4jljKKOA/Vo15K7MVzhcad8sLG1DlfysZmunY/wpLWVSzrscAWnr/qXpzQJA4G4vCPxTG3GWvQnoiyYjM/iQOiHHbPPNiByujFHRdtXiu58ox+DWCGm1lEYWE+DZ/hPWv3DFkTH4nbzo5MBrdWok8AFeqEMnxKOQNdZuTa4xAFa7TPWg0H3YWDxALNQRcVuUSeqNJjJDfxphOnLNsueiatgP218MSEC47FPW9Pe82ZyQgmMuiFA/tgJMIr5c5Dq8yj1fJ3vO5y0cVnNBVIhWHpvz5m5pleCG50uoI8CVSKz1hWzzQ/AvzymGzsDVFCEjpUJTUEzOgrNn8gH0IKGaLVSwy9dMUAGL3qKuui7LaZpdGMfNM7Y99eyUHLSGWR/p/ec3mgqUrevv2JObllmsf+rnDcyhjHxe6R7Ju9GMi9Me8QZDAVZ3QY7gWre2bftuHjMfOKnY6xLOz8Qok3mtZP3LLvPaxxHIyPEhTns5Dj0vcdxparQxalG8vuj2BTVs70daVzbVVV4Onw4tbi+6eNhO/ck5z0Biq0u27beLGb3Ffu+bakYm4g7pRGhDZupHU/er9z0wmXU3MCYNsevmzy4IQZ8QBHLPX3C+fY6MIeOu363CQMJtmS6ZU=
+  file: "$TRAVIS_BUILD_DIR/dist/**/*.{tar.gz,zip}"
+  on:
+    repo: yuuki/mkr-check
+    tags: true
+    condition: "$TRAVIS_TAG =~ ^v[0-9].*$"
