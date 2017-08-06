@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
+	"strings"
 
 	"github.com/mackerelio/checkers"
 	"github.com/mackerelio/mackerel-agent/checks"
@@ -52,6 +54,9 @@ func run(args []string) int {
 	}
 
 	agent := command.NewAgent(conf)
+	sort.Slice(agent.Checkers, func(i, j int) bool {
+		return strings.Compare(agent.Checkers[i].Name, agent.Checkers[j].Name) == -1
+	})
 	for _, c := range agent.Checkers {
 		report := c.Check()
 		var exitCode checkers.Status
