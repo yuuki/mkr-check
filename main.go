@@ -64,7 +64,7 @@ func run(args []string) int {
 			exitCode = code
 		}
 		ckr := checkers.NewChecker(exitCode, report.Message)
-		fmt.Print(ckr.String())
+		fmt.Printf("[%v]\n%v", c.Name, ckr.String())
 		if report.Status != checks.StatusOK {
 			return int(ckr.Status)
 		}
