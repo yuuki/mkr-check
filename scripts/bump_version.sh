@@ -11,8 +11,7 @@ MAIN='./'
 
 # gobump
 new_version=$(gobump "$1" -w -v "${MAIN}" | jq -r '.[]')
-git add "${MAIN}/version.go"
+git add "${MAIN}/main.go"
 git commit -m "Bump version $new_version"
-git push origin master
 git tag "v$new_version"
-git push origin "v$new_version"
+git push && git push --tags
