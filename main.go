@@ -16,7 +16,7 @@ import (
 
 const (
 	Name    string = "mkr-check"
-	Version string = "0.1.0"
+	Version string = "0.1.1"
 )
 
 var statusToExitCode = map[checks.Status]checkers.Status{
